@@ -605,10 +605,9 @@
     border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 20px;
     padding: 28px 26px;
-    min-height: 220px;
+    min-height: 340px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     transition: all 0.4s var(--ease);
     cursor: none;
     position: relative;
@@ -633,26 +632,64 @@
     transform: translateY(-6px);
   }
   .principle-card:hover::before { opacity: 1; }
+  .principle-card .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
   .principle-card .num {
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.3em;
     color: var(--acid);
     text-transform: uppercase;
-    margin-bottom: 24px;
   }
-  .principle-card p {
+  .principle-card .tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: rgba(244, 241, 234, 0.55);
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid rgba(244, 241, 234, 0.2);
+    border-radius: 100px;
+  }
+  .principle-card .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+  }
+  .principle-card h3 {
     font-family: var(--font-display);
-    font-size: clamp(20px, 1.6vw, 26px);
+    font-size: clamp(20px, 1.7vw, 28px);
     line-height: 1.15;
     font-weight: 300;
     letter-spacing: -0.015em;
     font-variation-settings: "opsz" 144, "SOFT" 40;
+    color: var(--ink);
   }
-  .principle-card em {
+  .principle-card h3 em {
     font-style: italic;
     color: var(--solar);
     font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  .principle-card h3 strong {
+    display: block;
+    margin-top: 4px;
+    font-weight: 400;
+    color: var(--magenta);
+    font-style: italic;
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  .principle-card .body p {
+    font-family: var(--font-grotesque);
+    font-size: clamp(11px, 0.85vw, 13px);
+    line-height: 1.55;
+    color: rgba(244, 241, 234, 0.55);
+    font-weight: 300;
   }
   .principle-card .highlight {
     background: var(--magenta);
@@ -666,6 +703,24 @@
     background: var(--electric);
     color: #000;
     transform: rotate(1deg);
+  }
+  .principle-card .card-bottom {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .principle-card .card-bottom .rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(244, 241, 234, 0.1);
+  }
+  .principle-card .card-bottom .brand {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    letter-spacing: 0.3em;
+    color: rgba(244, 241, 234, 0.3);
+    text-transform: uppercase;
   }
 
   /* ===== PET FACTORY (Paint 95 aesthetic) ===== */
@@ -2137,37 +2192,104 @@
   </div>
 </div>
 
-<!-- ============ MANIFESTO (COMPACT) ============ -->
+<!-- ============ MANIFESTO ============ -->
 <section class="manifesto" id="index">
   <div class="section-head" style="padding: 0 0 8px;">
-    <div class="section-tag">◉ INDEX / 06 PRINCÍPIOS</div>
-    <h2 class="section-title">O que <em>guia</em> o estúdio</h2>
+    <div class="section-tag">◉ MANIFESTO / 06 ATOS</div>
+    <h2 class="section-title">Arte · Identidade · <em>Visão</em></h2>
   </div>
   <div class="principles-grid">
+
     <div class="principle-card">
-      <span class="num">01 / PRINCÍPIO</span>
-      <p>Marca não é decoração.<br><em>É arquitetura de percepção.</em></p>
+      <div class="card-top">
+        <span class="num">01 / 06</span>
+        <span class="tag">A Era</span>
+      </div>
+      <div class="body">
+        <h3>O universo se <em>expandiu.</em><br>E continua.</h3>
+        <p>Nunca antes a criatividade humana teve tanto espaço para crescer, tanta ferramenta para construir, tanto alcance para transformar.</p>
+      </div>
+      <div class="card-bottom">
+        <div class="rule"></div>
+        <span class="brand">Mezzetti⁴⁰⁹⁶</span>
+      </div>
     </div>
+
     <div class="principle-card">
-      <span class="num">02 / PRINCÍPIO</span>
-      <p>Cada decisão <em>carrega significado.</em> O que parece estética, é <span class="highlight">estratégia</span>.</p>
+      <div class="card-top">
+        <span class="num">02 / 06</span>
+        <span class="tag">Verdade</span>
+      </div>
+      <div class="body">
+        <h3>Pela primeira vez na história, <em>autenticidade</em> é o ativo mais valioso que existe.</h3>
+        <p>Este é o tempo da identidade. Quem tem clareza sobre si mesmo possui a maior vantagem do mundo.</p>
+      </div>
+      <div class="card-bottom">
+        <div class="rule"></div>
+        <span class="brand">Mezzetti⁴⁰⁹⁶</span>
+      </div>
     </div>
+
     <div class="principle-card">
-      <span class="num">03 / PRINCÍPIO</span>
-      <p>Template é o <span class="highlight alt">caminho seguro</span>.<br><em>Seguro é como ninguém te lembra.</em></p>
+      <div class="card-top">
+        <span class="num">03 / 06</span>
+        <span class="tag">Identidade</span>
+      </div>
+      <div class="body">
+        <h3>Quem define sua <span class="highlight">identidade</span> define seu destino.</h3>
+        <p>Não é decoração. Não é tendência. É a estrutura que sustenta tudo — o conjunto de escolhas que transforma uma marca em algo que o mundo não esquece.</p>
+      </div>
+      <div class="card-bottom">
+        <div class="rule"></div>
+        <span class="brand">Mezzetti⁴⁰⁹⁶</span>
+      </div>
     </div>
+
     <div class="principle-card">
-      <span class="num">04 / PRINCÍPIO</span>
-      <p>Rigor não é o oposto de expressão.<br><em>É o que torna expressão sustentável.</em></p>
+      <div class="card-top">
+        <span class="num">04 / 06</span>
+        <span class="tag">Presença</span>
+      </div>
+      <div class="body">
+        <h3>Quando você sabe quem é, <em>as pessoas certas</em> te encontram.</h3>
+        <p>Criar com convicção é a forma mais generosa de se relacionar com o mundo. As conexões certas acontecem. O trabalho certo surge.</p>
+      </div>
+      <div class="card-bottom">
+        <div class="rule"></div>
+        <span class="brand">Mezzetti⁴⁰⁹⁶</span>
+      </div>
     </div>
+
     <div class="principle-card">
-      <span class="num">05 / PRINCÍPIO</span>
-      <p>Se ninguém <span class="highlight">odeia</span>, ninguém ama.<br><em>Marca neutra não vende.</em></p>
+      <div class="card-top">
+        <span class="num">05 / 06</span>
+        <span class="tag">A Pergunta</span>
+      </div>
+      <div class="body">
+        <h3>Quem você é quando está no <em>seu melhor?</em></h3>
+        <p>Essa resposta é o que construímos juntos. Em forma. Em linguagem. Em sistema visual. Em uma presença que cresce com o tempo.</p>
+      </div>
+      <div class="card-bottom">
+        <div class="rule"></div>
+        <span class="brand">Mezzetti⁴⁰⁹⁶</span>
+      </div>
     </div>
+
     <div class="principle-card">
-      <span class="num">06 / PRINCÍPIO</span>
-      <p>O bom design <em>desaparece.</em> O que fica é a sensação de <span class="highlight alt">estar no lugar certo</span>.</p>
+      <div class="card-top">
+        <span class="num">06 / 06</span>
+        <span class="tag">Manifesto</span>
+      </div>
+      <div class="body">
+        <h3>Em um universo de possibilidades,<strong>nós definimos identidade.</strong></h3>
+        <p>Arte. Identidade. Visão.<br>Não somos um estúdio que registra quem você é hoje. Somos um estúdio que ajuda você a descobrir quem você pode se tornar.</p>
+      </div>
+      <div class="card-bottom">
+        <div class="rule"></div>
+        <span class="brand">Mezzetti⁴⁰⁹⁶</span>
+      </div>
     </div>
+
   </div>
 </section>
 
