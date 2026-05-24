@@ -804,16 +804,26 @@
       linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px) 0 0 / 20px 20px;
     pointer-events: none;
   }
-  .pet-preview {
-    width: 70%;
-    max-width: 220px;
-    height: 70%;
-    max-height: 220px;
+  .pet-stage {
     position: absolute;
     inset: 0;
     margin: auto;
+    width: min(85%, 320px);
+    aspect-ratio: 1 / 1;
+    z-index: 2;
+  }
+  .pet-preview {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1;
     pointer-events: none;
+  }
+  .pet-preview svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
   #petDrawCanvas {
     position: absolute;
@@ -2199,9 +2209,11 @@
           <button class="paint-tool" title="Magic">✨</button>
           <button class="paint-tool" title="Clear">🗑️</button>
         </div>
-        <div class="paint-canvas" id="paintCanvasWrap">
-          <div class="pet-preview" id="petCanvas"></div>
-          <canvas id="petDrawCanvas" width="400" height="360"></canvas>
+        <div class="paint-canvas">
+          <div class="pet-stage" id="paintCanvasWrap">
+            <div class="pet-preview" id="petCanvas"></div>
+            <canvas id="petDrawCanvas" width="400" height="400"></canvas>
+          </div>
         </div>
         <div class="paint-sidebar">
           <div>
@@ -3277,13 +3289,15 @@ Enviado via mezzetti⁴⁰⁹⁶.studio`;
   function resizeDrawCanvas() {
     const wrap = document.getElementById('paintCanvasWrap');
     const rect = wrap.getBoundingClientRect();
+    // force square — same aspect ratio as duck SVG viewBox (1:1) so drawings align
+    const side = Math.max(Math.min(rect.width, rect.height), 200);
     // preserve drawings on resize
     const tmp = document.createElement('canvas');
     tmp.width = petDrawCanvas.width;
     tmp.height = petDrawCanvas.height;
     tmp.getContext('2d').drawImage(petDrawCanvas, 0, 0);
-    petDrawCanvas.width = Math.max(rect.width, 200);
-    petDrawCanvas.height = Math.max(rect.height, 200);
+    petDrawCanvas.width = side;
+    petDrawCanvas.height = side;
     drawCtx.drawImage(tmp, 0, 0, petDrawCanvas.width, petDrawCanvas.height);
     drawCtx.lineCap = 'round';
     drawCtx.lineJoin = 'round';
