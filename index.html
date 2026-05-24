@@ -887,8 +887,24 @@
     height: 100%;
     z-index: 3;
     cursor: crosshair;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    overscroll-behavior: contain;
   }
-  #petDrawCanvas.pet-mode { pointer-events: none; cursor: none; }
+  #petDrawCanvas.pet-mode {
+    pointer-events: none;
+    cursor: none;
+    touch-action: auto;
+  }
+  /* When user is actively drawing, lock scroll completely */
+  body.drawing-pet {
+    overflow: hidden;
+    touch-action: none;
+  }
+  body.drawing-pet .pet-section {
+    touch-action: none;
+  }
   .paint-color { position: relative; }
   .paint-color.active::after {
     content: '';
@@ -3617,6 +3633,8 @@ Enviado via mezzetti⁴⁰⁹⁶.studio`;
   petDrawCanvas.addEventListener('touchstart', e => {
     if (drawMode !== 'brush' && drawMode !== 'eraser') return;
     e.preventDefault();
+    e.stopPropagation();
+    document.body.classList.add('drawing-pet');
     const t = e.touches[0];
     drawing = true;
     const { x, y } = getCanvasCoords(touchToMouseEvent(t));
@@ -3635,6 +3653,7 @@ Enviado via mezzetti⁴⁰⁹⁶.studio`;
   petDrawCanvas.addEventListener('touchmove', e => {
     if (!drawing) return;
     e.preventDefault();
+    e.stopPropagation();
     const t = e.touches[0];
     const { x, y } = getCanvasCoords(touchToMouseEvent(t));
     if (drawMode === 'brush') {
@@ -3652,8 +3671,13 @@ Enviado via mezzetti⁴⁰⁹⁶.studio`;
     }
   }, { passive: false });
 
-  petDrawCanvas.addEventListener('touchend', () => drawing = false);
-  petDrawCanvas.addEventListener('touchcancel', () => drawing = false);
+  function endTouch() {
+    drawing = false;
+    document.body.classList.remove('drawing-pet');
+  }
+  petDrawCanvas.addEventListener('touchend', endTouch);
+  petDrawCanvas.addEventListener('touchcancel', endTouch);
+  window.addEventListener('touchend', endTouch);
 
   function hasDrawings() {
     // sample pixel data — if anything is drawn, alpha != 0 somewhere
