@@ -2013,56 +2013,140 @@
   }
 
   /* ===== MOBILE ===== */
-  @media (max-width: 768px) {
-    nav { padding: 14px 16px; }
-    .nav-links a { padding: 6px 10px; font-size: 9px; }
-    .hero, .principle { padding: 0 20px; }
-    .hero { padding: 90px 20px 30px; gap: 24px; }
-    .principles-grid { grid-template-columns: 1fr; gap: 12px; }
-    .principle-card { min-height: 160px; padding: 22px 20px; }
-    .principle-card p { font-size: 22px; }
-    .manifesto { padding: 60px 20px; }
-    .pet-section { padding: 20px 12px 60px; }
-    .paint-body { grid-template-columns: 1fr; gap: 6px; }
-    .paint-toolbar { grid-template-columns: repeat(4, 1fr); }
-    .paint-sidebar { padding: 8px; }
-    .paint-canvas { min-height: 240px; }
-    .pet-preview { max-width: 180px; max-height: 180px; }
-    .paint-window { transform: rotate(0deg); }
-    .flying-pet { width: 64px; height: 64px; }
-    body { cursor: auto; }
-    .cursor, .trail { display: none; }
-    .fab { bottom: 16px; right: 16px; width: 56px; height: 56px; }
-    .panel { right: 16px; bottom: 84px; width: calc(100vw - 32px); max-width: 320px; }
-    .sticker { display: none; }
-    .bento { grid-template-columns: 1fr; grid-auto-rows: 200px; }
-    .bento-card { grid-column: span 1 !important; grid-row: span 1 !important; }
-    .lab-grid { grid-template-columns: 1fr; }
-    .sandbox-wrap { grid-column: span 1; }
-    .signal-row { grid-template-columns: 1fr; }
-    .section-head { padding: 80px 20px 24px; }
-    .works, .lab, .signal { padding: 20px 20px 80px; }
-    .footer { padding: 40px 20px; flex-direction: column; gap: 20px; align-items: flex-start; }
-    .postcard-section { grid-template-columns: 1fr; padding: 20px 20px 60px; gap: 40px; }
-    .signal-submit-row { grid-template-columns: 1fr; }
-    .postcard { padding: 18px; }
-    .postcard-inner { grid-template-columns: 1.3fr 0.9fr; gap: 12px; }
-    .postcard-glyph { width: 90px; height: 90px; }
-    .postcard-title { font-size: 28px; }
-    .postcard-msg { font-size: 13px; }
-    .postcard-address { font-size: 9px; }
-    .hero-meta { font-size: 9px; }
-    .hero h1 .exp { font-size: 0.15em; padding: 3px 6px; }
-    .nav-mark { font-size: 10px; padding: 8px 10px; }
-    .lab .experiment { padding: 22px 18px; min-height: 320px; }
-    .type-controls { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-    .signal-tags { gap: 6px; }
-    .signal-tag { padding: 6px 12px; font-size: 10px; }
+  /* ============ MOBILE ============ */
+  @media (max-width: 1024px) {
+    .principles-grid { grid-template-columns: repeat(2, 1fr); }
   }
+
+  @media (max-width: 768px) {
+    /* Touch behavior */
+    body { cursor: auto; -webkit-tap-highlight-color: transparent; }
+    .cursor, .trail { display: none; }
+    * { cursor: auto !important; }
+
+    /* Better touch targets — minimum 44px */
+    button, .nav-links a, .signal-tag, .paint-tool, .paint-personality button,
+    .swatch, .control-btn, .panel-btn, .sandbox-btn, .card-link {
+      min-height: 38px;
+      touch-action: manipulation;
+    }
+
+    /* Nav */
+    nav { padding: 12px 14px; }
+    .nav-mark { font-size: 9px; padding: 7px 10px; letter-spacing: 0.08em; }
+    .nav-links { gap: 2px; padding: 4px; }
+    .nav-links a { padding: 8px 10px; font-size: 9px; letter-spacing: 0.08em; }
+
+    /* HERO */
+    .hero { padding: 100px 20px 30px; gap: 20px; min-height: 100vh; min-height: 100dvh; }
+    .hero-meta { font-size: 9px; padding: 7px 12px; gap: 8px; }
+    .hero h1 .exp { font-size: 0.16em; padding: 3px 7px; vertical-align: 3.5em; }
+    .hero-tagline { font-size: 16px; margin-top: 20px; }
+    .hero-footer { font-size: 9px; flex-direction: column; gap: 18px; align-items: flex-start; }
+    .scroll-indicator { flex-direction: row; align-items: center; gap: 10px; }
+    .scroll-indicator .line { height: 1px; width: 30px; }
+
+    /* MANIFESTO (new card structure) */
+    .manifesto { padding: 60px 16px; }
+    .principles-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 24px; }
+    .principle-card { min-height: 260px; padding: 24px 20px; }
+    .principle-card h3 { font-size: 22px; line-height: 1.18; }
+    .principle-card .body { gap: 12px; }
+    .principle-card .body p { font-size: 13px; line-height: 1.55; }
+    .principle-card .card-top { margin-bottom: 18px; }
+    .principle-card .tag { font-size: 8px; padding: 3px 8px; }
+    .principle-card .card-bottom { margin-top: 16px; }
+
+    /* PET FACTORY */
+    .pet-section { padding: 16px 12px 60px; }
+    .paint-window { transform: rotate(0deg); }
+    .paint-titlebar { padding: 5px 8px; font-size: 11px; }
+    .paint-menubar { font-size: 10px; padding: 3px; gap: 0; }
+    .paint-menubar span { padding: 4px 6px; }
+    .paint-body {
+      grid-template-columns: 50px 1fr;
+      grid-template-rows: 1fr auto;
+      gap: 4px;
+      padding: 4px;
+    }
+    .paint-toolbar { grid-template-columns: 1fr; gap: 4px; }
+    .paint-tool { width: 100%; height: 40px; font-size: 18px; }
+    .paint-canvas { min-height: 280px; grid-column: 2; grid-row: 1; }
+    .paint-sidebar {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      padding: 10px;
+    }
+    .paint-personality button { padding: 10px 12px; font-size: 12px; }
+    .paint-color-row { grid-template-columns: repeat(10, 1fr); }
+    .paint-statusbar { font-size: 10px; }
+    .pet-stage { width: min(75%, 240px); }
+
+    /* FLYING PET */
+    .flying-pet { width: 70px; height: 70px; }
+    .pet-bubble { max-width: 70vw; font-size: 14px; padding: 12px 14px; }
+
+    /* FAB & Panel */
+    .fab { bottom: 16px; right: 16px; width: 56px; height: 56px; }
+    .panel { right: 12px; left: 12px; bottom: 84px; width: auto; max-width: none; }
+
+    /* WORKS */
+    .works { padding: 20px 16px 80px; }
+    .bento { grid-template-columns: 1fr; grid-auto-rows: 180px; gap: 12px; }
+    .bento-card { grid-column: span 1 !important; grid-row: span 1 !important; padding: 20px; }
+    .bento-card .card-title { font-size: 26px; }
+
+    /* LAB */
+    .lab { padding: 20px 16px 80px; }
+    .lab-grid { grid-template-columns: 1fr; gap: 16px; }
+    .sandbox-wrap { grid-column: span 1; }
+    .lab .experiment { padding: 22px 18px; min-height: 300px; }
+    .experiment h3 { font-size: 26px; }
+    .type-stage span { font-size: clamp(70px, 18vw, 120px); }
+    .type-controls { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .gradient-stage { min-height: 200px; }
+    .gradient-chip { height: 32px; font-size: 8px; }
+    #gradientSpeed { width: 80px; }
+    .sandbox { min-height: 240px; }
+
+    /* SIGNAL */
+    .signal { padding: 20px 16px 80px; }
+    .signal-row { grid-template-columns: 1fr; gap: 12px; }
+    .signal-input, .signal-textarea { font-size: 16px; padding: 16px 18px; }
+    .signal-submit-row { grid-template-columns: 1fr; gap: 10px; }
+    .signal-submit { padding: 18px; font-size: 12px; min-height: 50px; }
+    .signal-tags { gap: 8px; }
+    .signal-tag { padding: 10px 14px; font-size: 11px; }
+
+    /* POSTCARD */
+    .postcard-section { padding: 20px 16px 60px; }
+    .postcard { padding: 16px; }
+    .postcard-inner { grid-template-columns: 1.2fr 0.8fr; gap: 10px; }
+    .postcard-glyph { width: 90px; height: 90px; }
+    .postcard-title { font-size: 26px; }
+    .postcard-msg { font-size: 12px; }
+    .postcard-address { font-size: 8px; }
+
+    /* SECTION HEADS */
+    .section-head { padding: 80px 16px 20px; }
+    .section-title { font-size: clamp(40px, 9vw, 64px); }
+    .section-sub { font-size: 15px; }
+
+    /* FOOTER */
+    .footer { padding: 40px 20px; flex-direction: column; gap: 18px; align-items: flex-start; }
+  }
+
   @media (max-width: 480px) {
-    .hero h1 { font-size: clamp(48px, 18vw, 80px); }
-    .section-title { font-size: clamp(36px, 12vw, 60px); }
-    .principle p { font-size: clamp(28px, 8vw, 44px); }
+    .hero h1 { font-size: clamp(56px, 18vw, 100px); line-height: 0.88; }
+    .hero h1 .exp { font-size: 0.18em; }
+    .section-title { font-size: clamp(36px, 11vw, 56px); }
+    .principle-card h3 { font-size: 20px; }
+    .bento-card .card-title { font-size: 22px; }
+    .nav-links a { padding: 8px; font-size: 8px; }
+    .nav-mark { font-size: 8px; padding: 6px 8px; }
+    .paint-body { grid-template-columns: 44px 1fr; }
+    .paint-tool { height: 36px; font-size: 16px; }
+    .paint-color-row { grid-template-columns: repeat(5, 1fr); }
   }
 </style>
 </head>
@@ -3524,6 +3608,52 @@ Enviado via mezzetti⁴⁰⁹⁶.studio`;
   });
 
   window.addEventListener('mouseup', () => drawing = false);
+
+  // TOUCH support for drawing canvas (mobile)
+  function touchToMouseEvent(touch) {
+    return { clientX: touch.clientX, clientY: touch.clientY };
+  }
+
+  petDrawCanvas.addEventListener('touchstart', e => {
+    if (drawMode !== 'brush' && drawMode !== 'eraser') return;
+    e.preventDefault();
+    const t = e.touches[0];
+    drawing = true;
+    const { x, y } = getCanvasCoords(touchToMouseEvent(t));
+    drawCtx.beginPath();
+    drawCtx.moveTo(x, y);
+    if (drawMode === 'brush') {
+      drawCtx.fillStyle = drawColor;
+      drawCtx.beginPath();
+      drawCtx.arc(x, y, brushSize / 2, 0, Math.PI * 2);
+      drawCtx.fill();
+      drawCtx.beginPath();
+      drawCtx.moveTo(x, y);
+    }
+  }, { passive: false });
+
+  petDrawCanvas.addEventListener('touchmove', e => {
+    if (!drawing) return;
+    e.preventDefault();
+    const t = e.touches[0];
+    const { x, y } = getCanvasCoords(touchToMouseEvent(t));
+    if (drawMode === 'brush') {
+      drawCtx.lineTo(x, y);
+      drawCtx.strokeStyle = drawColor;
+      drawCtx.lineWidth = brushSize;
+      drawCtx.stroke();
+    } else if (drawMode === 'eraser') {
+      drawCtx.save();
+      drawCtx.globalCompositeOperation = 'destination-out';
+      drawCtx.beginPath();
+      drawCtx.arc(x, y, 14, 0, Math.PI * 2);
+      drawCtx.fill();
+      drawCtx.restore();
+    }
+  }, { passive: false });
+
+  petDrawCanvas.addEventListener('touchend', () => drawing = false);
+  petDrawCanvas.addEventListener('touchcancel', () => drawing = false);
 
   function hasDrawings() {
     // sample pixel data — if anything is drawn, alpha != 0 somewhere
