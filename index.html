@@ -333,6 +333,160 @@
     opacity: 0;
     animation: fadeUp 1.4s var(--ease) 1s forwards;
   }
+  .hero-cta {
+    margin-top: 36px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 1.4s var(--ease) 1.4s forwards;
+    z-index: 3;
+  }
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--acid);
+    color: #08001A;
+    padding: 18px 28px;
+    border-radius: 100px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s var(--ease);
+    box-shadow: 0 8px 30px rgba(0, 255, 148, 0.3);
+    cursor: none;
+    font-weight: 500;
+  }
+  .cta-primary:hover {
+    background: var(--magenta);
+    color: #fff;
+    box-shadow: 0 12px 40px rgba(255, 45, 111, 0.4);
+    transform: translateY(-2px);
+  }
+  .cta-primary .arrow {
+    transition: transform 0.3s var(--ease);
+  }
+  .cta-primary:hover .arrow {
+    transform: translateX(6px);
+  }
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--ink);
+    padding: 18px 24px;
+    border-radius: 100px;
+    border: 1px solid rgba(244, 241, 234, 0.25);
+    backdrop-filter: blur(20px);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s var(--ease);
+    cursor: none;
+  }
+  .cta-secondary:hover {
+    border-color: var(--ink);
+    background: rgba(244, 241, 234, 0.08);
+  }
+
+  /* Nav SIGNAL highlight */
+  .nav-links a.nav-cta {
+    background: var(--acid);
+    color: #08001A;
+    font-weight: 500;
+  }
+  .nav-links a.nav-cta:hover {
+    background: var(--magenta);
+    color: #fff;
+  }
+
+  /* CTA STRIP (mid-page) */
+  .cta-strip {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 60px 40px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #1A0033 0%, #2D0055 50%, #1A0033 100%);
+    border: 1px solid rgba(0, 255, 148, 0.2);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .cta-strip::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 255, 148, 0.18), transparent 60%);
+    pointer-events: none;
+    animation: ctaGlow 8s ease-in-out infinite alternate;
+  }
+  .cta-strip::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 60%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 45, 111, 0.18), transparent 60%);
+    pointer-events: none;
+    animation: ctaGlow 8s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes ctaGlow {
+    from { transform: translateX(-30px); }
+    to { transform: translateX(30px); }
+  }
+  .cta-strip-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .cta-strip-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--acid);
+    padding: 6px 14px;
+    border: 1px solid var(--acid);
+    border-radius: 100px;
+  }
+  .cta-strip h2 {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.05;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    color: var(--ink);
+    max-width: 16ch;
+  }
+  .cta-strip h2 em {
+    font-style: italic;
+    color: var(--solar);
+    font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+  }
+  .cta-strip p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(16px, 1.4vw, 20px);
+    color: rgba(244, 241, 234, 0.7);
+    max-width: 480px;
+  }
+  .cta-strip .cta-primary {
+    margin-top: 12px;
+  }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -2058,9 +2212,20 @@
     .hero-meta { font-size: 9px; padding: 7px 12px; gap: 8px; }
     .hero h1 .exp { font-size: 0.16em; padding: 3px 7px; vertical-align: 3.5em; }
     .hero-tagline { font-size: 16px; margin-top: 20px; }
+    .hero-cta { margin-top: 24px; gap: 10px; }
+    .cta-primary { padding: 14px 22px; font-size: 11px; letter-spacing: 0.14em; }
+    .cta-secondary { padding: 14px 18px; font-size: 11px; letter-spacing: 0.14em; }
     .hero-footer { font-size: 9px; flex-direction: column; gap: 18px; align-items: flex-start; }
     .scroll-indicator { flex-direction: row; align-items: center; gap: 10px; }
     .scroll-indicator .line { height: 1px; width: 30px; }
+
+    /* CTA STRIP */
+    .cta-strip { padding: 44px 24px; margin: 40px 16px; border-radius: 24px; }
+    .cta-strip h2 { font-size: clamp(28px, 8vw, 44px); }
+    .cta-strip p { font-size: 15px; }
+
+    /* NAV CTA */
+    .nav-links a.nav-cta { padding: 8px 12px; font-size: 8.5px; }
 
     /* MANIFESTO (new card structure) */
     .manifesto { padding: 60px 16px; }
@@ -2178,7 +2343,7 @@
     <a href="#index">index</a>
     <a href="#works">works</a>
     <a href="#lab">lab</a>
-    <a href="#signal">signal</a>
+    <a href="#signal" class="nav-cta">trabalhar juntos →</a>
   </div>
 </nav>
 
@@ -2207,6 +2372,16 @@
       Entre infinitas possibilidades,<br>
       você escolhe a coordenada.
     </p>
+
+    <div class="hero-cta">
+      <a href="#signal" class="cta-primary">
+        Vamos trabalhar juntos
+        <span class="arrow">→</span>
+      </a>
+      <a href="#works" class="cta-secondary">
+        Ver projetos
+      </a>
+    </div>
   </div>
 
   <div class="hero-footer">
@@ -2615,6 +2790,19 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- ============ CTA STRIP ============ -->
+<section class="cta-strip">
+  <div class="cta-strip-inner">
+    <span class="cta-strip-tag">◉ DISPONÍVEL PARA NOVOS PROJETOS</span>
+    <h2>Tem uma marca pra <em>nascer</em>?</h2>
+    <p>Conversa rápida, sem compromisso. Respondo em 48h.</p>
+    <a href="#signal" class="cta-primary">
+      Mande um sinal
+      <span class="arrow">→</span>
+    </a>
   </div>
 </section>
 
