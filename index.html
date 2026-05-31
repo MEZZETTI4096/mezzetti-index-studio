@@ -3504,6 +3504,8 @@ Enviado via mezzetti⁴⁰⁹⁶.studio`;
 
   // ===== WhatsApp send =====
   document.getElementById('sendWhats').addEventListener('click', () => {
+    const contatoInput = document.querySelector('[name="contato"]');
+    if (contatoInput && !contatoInput.value.trim()) contatoInput.value = 'WhatsApp (via botão)';
     if (!validateForm()) return;
     const msg = composeMessage();
     const url = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(msg)}`;
@@ -3515,6 +3517,8 @@ Enviado via mezzetti⁴⁰⁹⁶.studio`;
 
   // ===== Email send =====
   document.getElementById('sendEmail').addEventListener('click', () => {
+    const contatoInput = document.querySelector('[name="contato"]');
+    if (contatoInput && !contatoInput.value.trim()) contatoInput.value = 'Email (via botão)';
     if (!validateForm()) return;
     const form = document.getElementById('signalForm');
     const data = new FormData(form);
