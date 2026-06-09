@@ -1930,6 +1930,133 @@
   }
   .signal-submit svg { width: 18px; height: 18px; }
 
+  /* ===== SIGNAL · DECORATIVE FRAME ===== */
+  .signal-frame {
+    position: relative;
+    padding: 56px clamp(28px, 5vw, 64px) 48px;
+    border-radius: 28px;
+    background:
+      radial-gradient(circle at 12% 0%, rgba(255,45,111,0.10), transparent 45%),
+      radial-gradient(circle at 100% 100%, rgba(0,255,148,0.08), transparent 50%),
+      linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .signal-frame::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 28px;
+    padding: 1px;
+    background: conic-gradient(from 0deg,
+      rgba(255,45,111,0.55), rgba(214,255,58,0.35),
+      rgba(0,255,148,0.45), rgba(107,43,255,0.45),
+      rgba(255,45,111,0.55));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0.55;
+    animation: signalSpin 14s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes signalSpin { to { transform: rotate(360deg); } }
+  .signal-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 28px);
+    mask-image: radial-gradient(circle at 50% 40%, #000 0%, transparent 75%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .signal-frame > * { position: relative; z-index: 1; }
+
+  /* Corner brackets */
+  .signal-bracket {
+    position: absolute;
+    width: 22px; height: 22px;
+    border: 1.5px solid var(--magenta);
+    z-index: 2;
+    opacity: 0.85;
+  }
+  .signal-bracket.tl { top: 14px; left: 14px; border-right: none; border-bottom: none; border-top-left-radius: 6px; }
+  .signal-bracket.tr { top: 14px; right: 14px; border-left: none; border-bottom: none; border-top-right-radius: 6px; border-color: var(--acid); }
+  .signal-bracket.bl { bottom: 14px; left: 14px; border-right: none; border-top: none; border-bottom-left-radius: 6px; border-color: var(--solar, #D6FF3A); }
+  .signal-bracket.br { bottom: 14px; right: 14px; border-left: none; border-top: none; border-bottom-right-radius: 6px; }
+
+  /* Coordinate badge */
+  .signal-coords {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(244,241,234,0.55);
+    background: rgba(0,0,0,0.55);
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.08);
+    z-index: 3;
+    backdrop-filter: blur(8px);
+  }
+  .signal-coords .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--acid);
+    box-shadow: 0 0 12px var(--acid);
+    animation: signalPulse 1.6s ease-in-out infinite;
+  }
+  @keyframes signalPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.7); }
+  }
+
+  /* Scanline */
+  .signal-scan {
+    position: absolute;
+    left: 0; right: 0;
+    top: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0,255,148,0.7), transparent);
+    filter: blur(1px);
+    animation: signalScan 6s linear infinite;
+    pointer-events: none;
+    z-index: 2;
+  }
+  @keyframes signalScan {
+    0% { transform: translateY(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(640px); opacity: 0; }
+  }
+
+  /* Floating signal glyph */
+  .signal-glyph {
+    position: absolute;
+    width: 140px; height: 140px;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .signal-glyph.left  { top: 38%; left: -50px; transform: rotate(-12deg); }
+  .signal-glyph.right { bottom: 22%; right: -40px; transform: rotate(18deg); }
+
+  @media (max-width: 768px) {
+    .signal-frame { padding: 50px 18px 38px; border-radius: 22px; }
+    .signal-bracket { width: 16px; height: 16px; }
+    .signal-glyph { display: none; }
+  }
+
   /* ===== POSTCARD + LETTER ===== */
   .postcard-section {
     padding: 40px 40px 80px;
@@ -2815,6 +2942,25 @@
   </div>
 
   <div class="signal">
+   <div class="signal-frame">
+    <span class="signal-bracket tl"></span>
+    <span class="signal-bracket tr"></span>
+    <span class="signal-bracket bl"></span>
+    <span class="signal-bracket br"></span>
+    <div class="signal-coords"><span class="dot"></span>LAT −23.5 · LON −46.6 · CANAL ABERTO</div>
+    <span class="signal-scan"></span>
+    <svg class="signal-glyph left" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="50" cy="50" r="20"/><circle cx="50" cy="50" r="32"/><circle cx="50" cy="50" r="44"/>
+        <line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="50" x2="100" y2="50"/>
+      </g>
+    </svg>
+    <svg class="signal-glyph right" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <polygon points="50,5 95,80 5,80"/><polygon points="50,25 80,75 20,75"/>
+        <circle cx="50" cy="60" r="6"/>
+      </g>
+    </svg>
     <form class="signal-form" id="signalForm" onsubmit="event.preventDefault(); return false;">
 
       <div class="signal-row">
@@ -2849,6 +2995,7 @@
         </button>
       </div>
     </form>
+   </div>
   </div>
 
   <!-- ============ POSTCARD + LETTER ============ -->
