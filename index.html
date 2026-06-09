@@ -2020,6 +2020,20 @@
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.35; transform: scale(0.7); }
   }
+  .signal-coords-dots::after {
+    content: "";
+    display: inline-block;
+    min-width: 1.4em;
+    text-align: left;
+    animation: signalDots 1.6s steps(4, end) infinite;
+  }
+  @keyframes signalDots {
+    0%   { content: ""; }
+    25%  { content: "."; }
+    50%  { content: ".."; }
+    75%  { content: "..."; }
+    100% { content: ""; }
+  }
 
   /* Scanline */
   .signal-scan {
@@ -2947,7 +2961,7 @@
     <span class="signal-bracket tr"></span>
     <span class="signal-bracket bl"></span>
     <span class="signal-bracket br"></span>
-    <div class="signal-coords"><span class="dot"></span>LAT −23.5 · LON −46.6 · CANAL ABERTO</div>
+    <div class="signal-coords"><span class="dot"></span>CRIANDO SUA IDENTIDADE DIGITAL<span class="signal-coords-dots"></span></div>
     <span class="signal-scan"></span>
     <svg class="signal-glyph left" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <g fill="none" stroke="currentColor" stroke-width="1">
